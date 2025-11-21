@@ -2,9 +2,6 @@ services:
   stardev_valley:
     build: .
     container_name: 'stardev_valley'
-    environment:
-      - USERNAME=app
-      - USERPASS=app
     volumes:
       - ./install_directory:/home/app/games
       - ./mods:/home/app/games/game/Mods
