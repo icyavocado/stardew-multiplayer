@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Check if a program name is supplied
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <program_name>"
+    exit 1
+fi
+
+PROGRAM_NAME=$1
+
+while true; do
+    # Query to check if the program is running
+    STATUS=$(supervisorctl status | grep "$PROGRAM_NAME")
+
+    if [[ ! -z "$STATUS" ]] && echo "$STATUS" | grep -q "RUNNING"; then
+        echo "$PROGRAM_NAME is now running. Stopping the script."
+        exit 0  # Exit the script if the program is running
+    else
+        echo "$PROGRAM_NAME is not running. Checking again in 0.5 seconds."
+        sleep 0.5  # Sleep only if the program is not running
+    fi
+done

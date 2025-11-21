@@ -1,0 +1,18 @@
+services:
+  stardev_valley:
+    build: .
+    container_name: 'stardev_valley'
+    environment:
+      - USERNAME=app
+      - USERPASS=app
+    volumes:
+      - ./install_directory:/home/app/games
+      - ./mods:/home/app/games/game/Mods
+      - ./startup.sh:/home/app/startup.sh:ro
+      - ./supervisord.conf:/home/app/supervisord.conf:ro
+      - ./check_and_run:/home/app/check_and_run:ro
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    restart: unless-stopped
+    entrypoint: ["/home/app/startup.sh"]
