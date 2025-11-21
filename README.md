@@ -52,7 +52,6 @@ services:
       - ./install_directory:/home/app/games:rw
       - ./mods:/home/app/games/game/Mods:rw
       - ./saves:/home/app/.config/StardewValley/Saves:rw
-      - ./logs:/home/app/logs:rw
 ```
 
 Notes:
