@@ -48,7 +48,7 @@ services:
       - '8081:8081'    # filebrowser
       - '24642:24642/udp' # Stardew UDP
     volumes:
-      - ./install_directory:/home/app/games:ro
+      - ./install_directory:/home/app/games:rw
       - ./mods:/home/app/games/game/Mods:rw
       - ./saves:/home/app/.config/StardewValley/Saves:rw
 ```
