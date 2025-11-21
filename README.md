@@ -27,6 +27,35 @@ docker run --rm -it \
   stardew-multiplayer
 ```
 
+## Deployment (docker-compose)
+
+Save the snippet below as `docker-compose.yml` next to `install_directory` and `mods`, then run:
+
+```bash
+docker compose -f docker-compose.yml up -d
+```
+
+```yaml
+version: '3.8'
+services:
+  stardew:
+    image: icyavocado/stardew-multiplayer:latest # replace with your image or use `build: .`
+    container_name: stardew_multiplayer
+    restart: unless-stopped
+    ports:
+      - '8080:8080'    # noVNC
+      - '8081:8081'    # filebrowser
+      - '24642:24642/udp' # Stardew UDP
+    volumes:
+      - ./install_directory:/home/app/games:rw
+      - ./mods:/home/app/games/game/Mods:rw
+      - ./logs:/home/app/logs:rw
+```
+
+Notes:
+- Use `build: .` if you want to build the image on the host instead of pulling from a registry.
+- Ensure `install_directory` contains the game files before starting the container.
+
 ## Key concepts
 - The container is driven by `supervisord` (`supervisord.conf`) which starts `Xvfb`, `x11vnc`, `openbox`, `novnc`, `filebrowser`, and the `stardewvalley` binary.
 - `startup.sh` is the entrypoint: it optionally patches screen resolution, starts `supervisord`, renames the game binary (if present), and tails logs in `/home/app/logs`.
