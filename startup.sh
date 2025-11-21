@@ -11,8 +11,6 @@ if [[ -f /home/app/games/game/StardewValley ]]; then
   mv "/home/app/games/game/StardewValley" "/home/app/games/game/Stardew Valley"
 fi
 
-mkdir -p /home/app/.config/StardewValley/ErrorLogs
-
 ln -sf /home/app/.config/StardewValley/Saves /home/app/games/game/Mods
 
 sleep 2

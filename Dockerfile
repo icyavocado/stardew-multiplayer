@@ -22,5 +22,6 @@ RUN curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh |
 USER app
 
 RUN mkdir -p /home/app/logs
+RUN mkdir -p /home/app/.config/StardewValley
 
 WORKDIR /home/app
