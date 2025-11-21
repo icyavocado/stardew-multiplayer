@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if [ -n "$RESOLUTION" ]; then
-    sed -i "s/1366x768/$RESOLUTION/" /home/app/supervisord.conf
-fi
-
 # start up supervisord, all daemons should launched by supervisord.
 /usr/bin/supervisord -c /home/app/supervisord.conf
 
