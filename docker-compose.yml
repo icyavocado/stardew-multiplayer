@@ -9,9 +9,6 @@ services:
       - ./install_directory:/home/app/games
       - ./mods:/home/app/games/game/Mods
       - ./saves:/home/app/.config/StardewValley/Saves
-      - ./startup.sh:/home/app/startup.sh:ro
-      - ./supervisord.conf:/home/app/supervisord.conf:ro
-      - ./check_and_run:/home/app/check_and_run:ro
     ports:
       - "8080:8080"
       - "8081:8081"

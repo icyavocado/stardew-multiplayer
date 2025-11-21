@@ -24,4 +24,8 @@ USER app
 RUN mkdir -p /home/app/logs
 RUN mkdir -p /home/app/.config/StardewValley
 
+ADD startup.sh /home/app/startup.sh
+ADD check_and_run /home/app/check_and_run
+ADD supervisord.conf /home/app/supervisord.conf
+
 WORKDIR /home/app
