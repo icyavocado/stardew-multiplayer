@@ -14,5 +14,6 @@ services:
     ports:
       - "8080:8080"
       - "8081:8081"
+      - "24642:24642/udp"
     restart: unless-stopped
     entrypoint: ["/home/app/startup.sh"]
