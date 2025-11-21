@@ -38,7 +38,6 @@ docker compose -f docker-compose.yml up -d
 ```
 
 ```yaml
-version: '3.8'
 services:
   stardew:
     image: icyavocado/stardew-multiplayer:latest # replace with your image or use `build: .`
@@ -49,7 +48,7 @@ services:
       - '8081:8081'    # filebrowser
       - '24642:24642/udp' # Stardew UDP
     volumes:
-      - ./install_directory:/home/app/games:rw
+      - ./install_directory:/home/app/games:ro
       - ./mods:/home/app/games/game/Mods:rw
       - ./saves:/home/app/.config/StardewValley/Saves:rw
 ```
