@@ -6,6 +6,7 @@ A small container image and compose setup to run a Stardew Valley instance with 
 
 1. Place your Stardew game files into the `install_directory/` folder on the host. The container expects the game binary under `/home/app/games/game/`.
 2. Add any mods to the `mods/` folder on the host — they will be mounted to `/home/app/games/game/Mods` inside the container.
+3. Place your save files into the `saves/` folder on the host — they will be mounted to `/home/app/.config/StardewValley/Saves` inside the container.
 3. Build and run with Docker Compose:
 
 ```bash
@@ -24,6 +25,7 @@ docker run --rm -it \
   -p 24642:24642/udp \
   -v $(pwd)/install_directory:/home/app/games \
   -v $(pwd)/mods:/home/app/games/game/Mods \
+  -v $(pwd)/saves:/home/app/.config/StardewValley/Saves \
   stardew-multiplayer
 ```
 
@@ -49,6 +51,7 @@ services:
     volumes:
       - ./install_directory:/home/app/games:rw
       - ./mods:/home/app/games/game/Mods:rw
+      - ./saves:/home/app/.config/StardewValley/Saves:rw
       - ./logs:/home/app/logs:rw
 ```
 
