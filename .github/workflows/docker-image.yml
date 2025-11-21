@@ -3,9 +3,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'Dockerfile'
+      - 'docker-compose.yml'
   pull_request:
     branches:
       - main
+    paths:
+      - 'Dockerfile'
+      - 'docker-compose.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
