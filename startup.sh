@@ -9,5 +9,9 @@ fi
 
 ln -sf /home/app/.config/StardewValley/Saves /home/app/games/game/Mods
 
-sleep 2
-tail -F /home/app/logs/* /home/app/.config/StardewValley/ErrorLogs/*
+while [ -z "$(ls /home/app/.config/StardewValley/ErrorLogs/*.txt 2>/dev/null)" ]
+do
+  sleep 2
+done
+
+tail -F /home/app/.config/StardewValley/**/*
